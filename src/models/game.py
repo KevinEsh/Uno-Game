@@ -1,4 +1,4 @@
-from random import shuffle
+from random import shuffle, choice
 from src.models.card import *
 from src.models.player import *
 
@@ -35,7 +35,10 @@ class Game:
         shuffle(self.deck)
 
     def __generateDumpDeck(self):
-        self.dump_deck = [self.deck.pop()]
+        card = self.deck.pop()
+        if isinstance(card, WildCard):
+            card.color = choice(self.colors)
+        self.dump_deck = [card]
 
     def __generatePlayers(self):
         self.players = []
@@ -55,7 +58,7 @@ class Game:
         return self.dump_deck[-1]
 
     def nextTurn(self):
-        if self.revert:
+        if self.reverse:
             self.turn = self.turn - 1 if self.turn else len(self.players) - 1
         else:
             self.turn = (self.turn + 1) % len(self.players)
