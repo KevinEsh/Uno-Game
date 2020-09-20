@@ -10,8 +10,6 @@ class Card:
         return self.__str__()
 
     def activate(self, game):
-        # if not isinstance(game, Game):
-        #     raise Exception # todo: definir exception despues
         pass
 
 class PlusCard(Card):
