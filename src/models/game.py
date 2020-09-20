@@ -1,6 +1,6 @@
 from random import shuffle
-from card import *
-from player import *
+from src.models.card import *
+from src.models.player import *
 
 class Game:
     def __init__(self, names, init_cards=5, init_player=0, reverse=False):
@@ -68,22 +68,3 @@ class Game:
             return True
         else:
             return False
-
-if __name__ == "__main__":
-    game = Game(["user_1", "user_2", "user_3"])
-    game.generate()
-    print(game)
-
-    # while True:
-    #     player = game.players[game.turn]
-    #     movement = waitMovement()
-    #     if movement == "getCard":
-    #         player.cards.append(game.dump.pop())
-    #     elif movement == "selectCard":
-    #         card = waitCard(player)
-    #         if not game.validCard(card): continue
-    #         game.dump_deck.append(card)
-    #         player.cards.remove(card)
-    #     if game.uno(player):
-    #         break
-    #     game.nextTurn()

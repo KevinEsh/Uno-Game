@@ -7,7 +7,7 @@ class Card:
         return f"Card(value={self.value},color={self.color})"
 
     def __repr__(self):
-        return self.__str__(self)
+        return self.__str__()
 
     def activate(self, game):
         # if not isinstance(game, Game):
@@ -15,9 +15,6 @@ class Card:
         pass
 
 class PlusCard(Card):
-    def __init__(self, value, color):
-        super().__init__(value, color)
-
     def activate(self, game):
         super().activate(game)
         turn = game.nextTurn()
@@ -25,9 +22,6 @@ class PlusCard(Card):
         game.deck = game.deck[self.value:]
 
 class RevertCard(Card):
-    def __init__(self, value, color):
-        super().__init__(value, color)
-
     def activate(self, game):
         super().activate(game)
         game.revert = not game.revert
@@ -35,16 +29,13 @@ class RevertCard(Card):
 
 class WildCard(Card):
     def __init__(self, value, color):
-        super().__init__(value, color)
+        super().__init__(value, None)
 
     def activate(self, game):
         self.color = game.waitColor()
         game.nextTurn()
 
 class CancelCard(Card):
-    def __init__(self, value, color):
-        super().__init__(value, color)
-
     def activate(self, game):
         game.nextTurn()
 
