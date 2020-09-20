@@ -11,7 +11,3 @@ class Player:
 
 class PC(Player):
     pass
-
-if __name__ == "__main__":
-    p = Player("generic", [i for i in range(100)])
-    print(p)

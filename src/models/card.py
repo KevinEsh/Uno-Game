@@ -36,7 +36,3 @@ class WildCard(Card):
 class CancelCard(Card):
     def activate(self, game):
         game.nextTurn()
-
-if __name__ == "__main__":
-    c = WildCard(10, "blue")
-    print(c)
