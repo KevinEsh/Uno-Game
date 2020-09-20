@@ -1,6 +1,6 @@
 from random import shuffle
-from uno_game.card import *
-from uno_game.player import *
+from card import *
+from player import *
 
 class Game:
     def __init__(self, names, init_cards=5, init_player=0, reverse=False):
@@ -13,7 +13,7 @@ class Game:
         self.values = list(range(10)) + list(range(1,10)) + ["+2", "Revert", "Cancel"]*2  + ["WildCard", "+4"]
 
     def __str__(self):
-        return f"Game(names=[{len(self.names)})], init_cards={self.init_cards}, revert={self.revert})"
+        return f"Game(names=[{len(self.names)})], init_cards={self.init_cards}, revert={self.reverse})"
 
     def __repr__(self):
         return self.__str__(self)
@@ -72,17 +72,18 @@ class Game:
 if __name__ == "__main__":
     game = Game(["user_1", "user_2", "user_3"])
     game.generate()
+    print(game)
 
-    while True:
-        player = game.players[game.turn]
-        movement = waitMovement()
-        if movement == "getCard":
-            player.cards.append(game.dump.pop())
-        elif movement == "selectCard":
-            card = waitCard(player)
-            if not game.validCard(card): continue
-            game.dump_deck.append(card)
-            player.cards.remove(card)
-        if game.uno(player):
-            break
-        game.nextTurn()
+    # while True:
+    #     player = game.players[game.turn]
+    #     movement = waitMovement()
+    #     if movement == "getCard":
+    #         player.cards.append(game.dump.pop())
+    #     elif movement == "selectCard":
+    #         card = waitCard(player)
+    #         if not game.validCard(card): continue
+    #         game.dump_deck.append(card)
+    #         player.cards.remove(card)
+    #     if game.uno(player):
+    #         break
+    #     game.nextTurn()

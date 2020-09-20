@@ -1,5 +1,3 @@
-from game import Game
-
 class Card:
     def __init__(self, value, color):
         self.value = value
@@ -12,8 +10,8 @@ class Card:
         return self.__str__(self)
 
     def activate(self, game):
-        if not isinstance(game, Game):
-            raise Exception # todo: definir exception despues
+        # if not isinstance(game, Game):
+        #     raise Exception # todo: definir exception despues
         pass
 
 class PlusCard(Card):
